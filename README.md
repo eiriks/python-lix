@@ -7,7 +7,7 @@ Zero dependencies. Typed. Tested.
 ## Install
 
 ```bash
-pip install lix
+pip install git+https://github.com/eiriks/python-lix.git
 ```
 
 ## Usage
