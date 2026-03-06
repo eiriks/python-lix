@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/eiriks/python-lix/actions/workflows/ci.yml/badge.svg)](https://github.com/eiriks/python-lix/actions/workflows/ci.yml)
 
-LIX and RIX readability scores for Scandinavian languages (Norwegian, Swedish, Danish).
+LIX and RIX readability scores for Scandinavian languages and English.
 
 Zero dependencies. Typed. Tested.
 
@@ -31,6 +31,7 @@ print(result.difficulty)  # Difficulty.VERY_EASY
 | `nn` | Norwegian Nynorsk |
 | `da` | Danish |
 | `sv` | Swedish |
+| `en` | English |
 
 
 ## Arv og opphav

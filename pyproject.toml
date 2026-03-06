@@ -1,13 +1,13 @@
 [project]
 name = "lix"
-version = "0.1.0"
-description = "LIX and RIX readability scores for Scandinavian languages"
+version = "0.2.0"
+description = "LIX and RIX readability scores for Scandinavian languages and English"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.12"
 dependencies = []
 authors = [{ name = "Eirik Stavelin", email = "eirik@stavelin.com" }]
-keywords = ["readability", "lix", "rix", "nlp", "scandinavian", "norwegian", "swedish", "danish"]
+keywords = ["readability", "lix", "rix", "nlp", "scandinavian", "norwegian", "swedish", "danish", "english"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",

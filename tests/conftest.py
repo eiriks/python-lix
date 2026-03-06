@@ -31,3 +31,19 @@ def danish_text() -> str:
 def swedish_text() -> str:
     """A Swedish text for cross-language testing."""
     return "Katten satt på mattan. Den var svart och liten."
+
+
+@pytest.fixture()
+def simple_english_text() -> str:
+    """A simple English text with known readability properties."""
+    return "The cat sat on the mat. It was warm and soft."
+
+
+@pytest.fixture()
+def complex_english_text() -> str:
+    """A more complex English text with longer words."""
+    return (
+        "The parliamentary representative discussed the constitutional "
+        "amendment during the interpellation debates. The prime minister "
+        "argued convincingly for the appropriations budget."
+    )

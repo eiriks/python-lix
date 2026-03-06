@@ -1,7 +1,7 @@
 """Core readability score computation.
 
 Implements the LIX (Björnsson, 1968) and RIX (Anderson, 1983) formulas
-for Scandinavian languages.
+for Scandinavian languages and English.
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ def compute_lix(text: str, language: Language = "nb") -> float:
 
     Args:
         text: The input text to analyze. Must be non-empty.
-        language: ISO 639-1 code for tokenization ('nb', 'nn', 'da', 'sv').
+        language: ISO 639-1 code for tokenization ('nb', 'nn', 'da', 'sv', 'en').
 
     Returns:
         The LIX score as a float. Lower scores indicate easier text.
@@ -49,7 +49,7 @@ def compute_rix(text: str, language: Language = "nb") -> float:
 
     Args:
         text: The input text to analyze. Must be non-empty.
-        language: ISO 639-1 code for tokenization ('nb', 'nn', 'da', 'sv').
+        language: ISO 639-1 code for tokenization ('nb', 'nn', 'da', 'sv', 'en').
 
     Returns:
         The RIX score as a float. Higher scores indicate harder text.
@@ -70,7 +70,7 @@ def compute(text: str, language: Language = "nb") -> ReadabilityResult:
 
     Args:
         text: The input text to analyze. Must be non-empty.
-        language: ISO 639-1 code for tokenization ('nb', 'nn', 'da', 'sv').
+        language: ISO 639-1 code for tokenization ('nb', 'nn', 'da', 'sv', 'en').
 
     Returns:
         A ReadabilityResult with LIX, RIX, difficulty category, and counts.

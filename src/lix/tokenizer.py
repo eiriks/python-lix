@@ -1,4 +1,4 @@
-"""Tokenization utilities for Scandinavian text analysis."""
+"""Tokenization utilities for text analysis."""
 
 from __future__ import annotations
 
@@ -98,6 +98,44 @@ _ABBREVIATIONS: dict[Language, frozenset[str]] = {
             "jfr",
             "fr.o.m",
             "t.o.m",
+        }
+    ),
+    "en": frozenset(
+        {
+            # Titles
+            "Mr",
+            "Mrs",
+            "Ms",
+            "Dr",
+            "Prof",
+            "Rev",
+            "Gen",
+            "Gov",
+            "Sgt",
+            "Jr",
+            "Sr",
+            "St",
+            # Academic / professional
+            "Vol",
+            "No",
+            "Fig",
+            "Ed",
+            "Dept",
+            "Corp",
+            "Inc",
+            "Ltd",
+            "Co",
+            # Latin abbreviations
+            "e.g",
+            "i.e",
+            "vs",
+            "etc",
+            "approx",
+            "est",
+            # Country / organisation abbreviations
+            "U.S",
+            "U.K",
+            "U.N",
         }
     ),
 }

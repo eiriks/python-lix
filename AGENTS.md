@@ -1,7 +1,7 @@
 # AGENTS.md — LIX Readability Library
 
-> Guidelines for AI coding agents operating in this repository.
-
+Implements the LIX (Björnsson, 1968) and RIX (Anderson, 1983) formulas
+for Scandinavian languages and English.
 ## Project Overview
 
 LIX is a Python library for computing readability scores (LIX, RIX, and related metrics).

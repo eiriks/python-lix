@@ -6,9 +6,12 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Literal
 
-# Supported Scandinavian languages
-Language = Literal["nb", "nn", "da", "sv"]
-"""ISO 639-1 language codes: nb=Bokmål, nn=Nynorsk, da=Danish, sv=Swedish."""
+# Supported languages
+Language = Literal["nb", "nn", "da", "sv", "en"]
+"""ISO 639-1 codes.
+
+nb=Bokmål, nn=Nynorsk, da=Danish, sv=Swedish, en=English.
+"""
 
 LONG_WORD_THRESHOLD: int = 6
 """Words with more than this many characters are considered 'long words'."""

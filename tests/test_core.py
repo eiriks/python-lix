@@ -45,7 +45,7 @@ class TestComputeLix:
     def test_language_parameter_accepted(self) -> None:
         text = "Hunden er stor. Katten er liten."
         # Should work for all supported languages
-        for lang in ("nb", "nn", "da", "sv"):
+        for lang in ("nb", "nn", "da", "sv", "en"):
             score = compute_lix(text, language=lang)  # type: ignore[arg-type]
             assert isinstance(score, float)
 
@@ -325,3 +325,52 @@ class TestEdgeCases:
         result = compute(text)
         assert result.long_word_count == result.word_count
         assert result.lix > 100  # 3/1 + 300/3 = 103
+
+
+class TestEnglishSupport:
+    """Tests for English language support."""
+
+    def test_simple_english_text(self, simple_english_text: str) -> None:
+        score = compute_lix(simple_english_text, language="en")
+        # Simple text with short words should have a low LIX
+        assert score < 30
+
+    def test_complex_english_higher_score(
+        self,
+        simple_english_text: str,
+        complex_english_text: str,
+    ) -> None:
+        simple = compute_lix(simple_english_text, language="en")
+        complex_ = compute_lix(complex_english_text, language="en")
+        assert complex_ > simple
+
+    def test_english_compute_returns_result(self, simple_english_text: str) -> None:
+        result = compute(simple_english_text, language="en")
+        assert isinstance(result, ReadabilityResult)
+        assert result.language == "en"
+        assert result.word_count > 0
+        assert result.sentence_count > 0
+        assert isinstance(result.difficulty, Difficulty)
+
+    def test_english_known_score(self) -> None:
+        # "The dog is big. The cat is small."
+        # 8 words, 2 sentences → avg sentence length = 4
+        # No long words (all ≤ 6 chars) → long word % = 0
+        # LIX = 4 + 0 = 4.0
+        text = "The dog is big. The cat is small."
+        score = compute_lix(text, language="en")
+        assert score == pytest.approx(4.0, abs=0.1)
+
+    def test_english_rix(self, simple_english_text: str) -> None:
+        score = compute_rix(simple_english_text, language="en")
+        assert isinstance(score, float)
+        assert score >= 0
+
+    def test_english_complex_difficulty(self, complex_english_text: str) -> None:
+        result = compute(complex_english_text, language="en")
+        # Complex text with long words should be at least medium difficulty
+        assert result.difficulty in (
+            Difficulty.MEDIUM,
+            Difficulty.HARD,
+            Difficulty.VERY_HARD,
+        )

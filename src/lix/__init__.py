@@ -1,11 +1,11 @@
-"""LIX — Readability scores for Scandinavian languages.
+"""LIX — Readability scores for Scandinavian languages and English.
 
 Computes LIX (Björnsson, 1968) and RIX (Anderson, 1983) readability
-indices for Norwegian (Bokmål/Nynorsk), Swedish, and Danish text.
+indices for Norwegian (Bokmål/Nynorsk), Swedish, Danish, and English text.
 
 Example:
     >>> import lix
-    >>> result = lix.compute("Katten satt på matta. Den var varm.")
+    >>> result = lix.compute("The cat sat on the mat. It was warm.", language="en")
     >>> result.lix
     10.0
     >>> result.difficulty

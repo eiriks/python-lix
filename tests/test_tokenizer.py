@@ -186,3 +186,59 @@ class TestExtractWordsEdgeCases:
         assert "viktig" in words
         # No leading/trailing hyphen tokens
         assert all(not w.startswith("-") and not w.endswith("-") for w in words)
+
+
+class TestEnglishTokenization:
+    """Tests for English language tokenization."""
+
+    def test_simple_english_sentence_split(self) -> None:
+        text = "The cat sat on the mat. It was warm."
+        sentences = split_sentences(text, "en")
+        assert len(sentences) == 2
+
+    def test_english_abbreviation_mr_not_split(self) -> None:
+        """Mr. should not trigger a sentence split."""
+        text = "Mr. Smith went to town. He bought milk."
+        sentences = split_sentences(text, "en")
+        assert len(sentences) == 2
+
+    def test_english_abbreviation_dr_not_split(self) -> None:
+        """Dr. should not trigger a sentence split."""
+        text = "Dr. Jones examined the patient. She prescribed medicine."
+        sentences = split_sentences(text, "en")
+        assert len(sentences) == 2
+
+    def test_english_abbreviation_eg_not_split(self) -> None:
+        """e.g. should not trigger a sentence split."""
+        text = "Use a separator e.g. a comma. That helps readability."
+        sentences = split_sentences(text, "en")
+        assert len(sentences) == 2
+
+    def test_english_abbreviation_ie_not_split(self) -> None:
+        """i.e. should not trigger a sentence split."""
+        text = "Use the primary key i.e. the ID. That ensures uniqueness."
+        sentences = split_sentences(text, "en")
+        assert len(sentences) == 2
+
+    def test_english_abbreviation_us_not_split(self) -> None:
+        """U.S. should not trigger a sentence split."""
+        text = "The U.S. government passed the bill. It was controversial."
+        sentences = split_sentences(text, "en")
+        assert len(sentences) == 2
+
+    def test_english_multiple_abbreviations(self) -> None:
+        """Multiple abbreviations in one sentence."""
+        text = "Dr. Smith and Prof. Jones met at St. Mary's. They discussed research."
+        sentences = split_sentences(text, "en")
+        assert len(sentences) == 2
+
+    def test_english_extract_words(self) -> None:
+        words = extract_words("The quick brown fox jumps over the lazy dog")
+        assert len(words) == 9
+        assert "quick" in words
+        assert "jumps" in words
+
+    def test_english_long_words(self) -> None:
+        # "international" = 13, "representative" = 14, "cat" = 3, "dog" = 3
+        words = ["international", "representative", "cat", "dog"]
+        assert count_long_words(words) == 2
