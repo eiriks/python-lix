@@ -1,5 +1,7 @@
 # LIX
 
+[![CI](https://github.com/eiriks/python-lix/actions/workflows/ci.yml/badge.svg)](https://github.com/eiriks/python-lix/actions/workflows/ci.yml)
+
 LIX and RIX readability scores for Scandinavian languages (Norwegian, Swedish, Danish).
 
 Zero dependencies. Typed. Tested.
